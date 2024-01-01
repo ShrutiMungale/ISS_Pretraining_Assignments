@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h3>Create an Account</h3>
+      <form action="home.html" onsubmit="return validateForm()">
+        <div class="container2">
+          <div class="input">
+            <label for="firstName">First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              placeholder="Enter first name"
+              autofocus
+              required
+            />
+          </div>
+          <div class="input">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" placeholder="Enter last name" />
+          </div>
+          <div class="input">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              placeholder="Enter username"
+              required
+            />
+          </div>
+          <div class="input">
+            <label for="email">Email</label>
+            <input type="text" id="email" placeholder="Enter email" required />
+          </div>
+          <div class="input">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter password"
+              required
+              onkeyup="check()"
+            />
+          </div>
+          <div class="input">
+            <label for="confirmPassword">Confirm Password</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              placeholder="Confirm password"
+              required
+              onkeyup="check()"
+            />
+            <span id="message"></span>
+          </div>
+        </div>
+
+        <label for="gender" class="label-gender">Gender</label>
+        <div class="radio-group">
+          <label for="male">
+            <input type="radio" name="gender" value="male" id="male" />
+            Male
+          </label>
+          <label for="female">
+            <input type="radio" name="gender" value="female" id="female" />
+            Female
+          </label>
+          <label for="other">
+            <input type="radio" name="gender" value="other" id="other" />
+            Other
+          </label>
+        </div>
+
+        <div class="checkbox">
+          <input type="checkbox" id="acceptTerms" name="acceptTerms" />
+          <label for="acceptTerms">I accept the terms and conditions</label>
+        </div>
+
+        <input class="submit" id="mySubmit" type="submit" value="Register" />
+      </form>
+
+      <script>
+        var check = function () {
+          if (
+            document.getElementById("password").value !=
+              document.getElementById("confirmPassword").value ||
+            document.getElementById("password").value == ""
+          ) {
+            document.getElementById("message").style.color = "red";
+            document.getElementById("message").innerHTML =
+              "Passwords not matching";
+            document.getElementById("mySubmit").style.backgroundColor = "grey";
+            document.getElementById("mySubmit").disabled = true;
+          } else {
+            document.getElementById("message").style.color = "green";
+            document.getElementById("message").innerHTML =
+              " passwords matching";
+            document.getElementById("mySubmit").disabled = false;
+            document.getElementById("mySubmit").style.backgroundColor = "green";
+          }
+        };
+        function validateForm() {
+          var firstName = document.getElementById("firstName").value;
+          var lastName = document.getElementById("lastName").value;
+          var username = document.getElementById("username").value;
+          var email = document.getElementById("email").value;
+          var password = document.getElementById("password").value;
+          var confirmPassword =
+            document.getElementById("confirmPassword").value;
+          var acceptTerms = document.getElementById("acceptTerms").checked;
+          var re1 = new RegExp(
+            "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$"
+          );
+          var re2 = new RegExp("^[a-z0-9._%+-]+@[a-z0-9.-]+[.][a-z]{2,3}$");
+          var re3 = new RegExp("^[a-zA-Z]+$");
+          if (!re3.test(firstName)) {
+            alert("Name should contain only alphabets");
+            return false;
+          }
+
+          if (!acceptTerms) {
+            alert("Please accept the terms and conditions.");
+            return false;
+          }
+
+          if (!re1.test(password)) {
+            alert(
+              "Passwords should be at least 8 characters 1 lower case , 1 uppercase and a number"
+            );
+            return false;
+          }
+
+          if (password != confirmPassword) {
+            alert("Passwords and Confirm password do not match");
+            return false;
+          }
+          if (!re2.test(email)) {
+            alert("Please enter valid email id");
+            return false;
+          }
+
+          return true;
+        }
+      </script>
+    </div>
+  </body>
+</html>

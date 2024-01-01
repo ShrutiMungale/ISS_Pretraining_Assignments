@@ -1,0 +1,23 @@
+<bookstore>  
+  <book category="FICTION">  
+    <title lang="en">Harry Potter and the Prisoner of Askaban</title>  
+    <author>J.K Rowling</author>  
+    <publisher>Bloomsbury</publisher>
+    <year>1999</year>  
+    <price>249</price>  
+  </book>  
+  <book category="AUTOBIOGRAPHY">  
+    <title lang="en">A Shot at History: My Obsessive Journey to Olympic Gold</title>  
+    <author>Abhinav Bindra</author>  
+    <publisher>Harper Sports</publisher>
+    <year>2011</year>  
+    <price>365</price>  
+  </book>  
+  <book category="SELF HELP">  
+    <title lang="en">Atomic Habits</title>  
+    <author>James Clear</author>  
+     <publisher>Random House Business Books</publisher>
+    <year>2018</year>  
+    <price>471</price>  
+  </book>  
+</bookstore>  
